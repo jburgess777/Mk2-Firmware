@@ -16,10 +16,10 @@ void setup() {
 void loop() {
     if (success) {
         SerialUSB.print("Unique ID: ");
-        SerialUSB.print(String(id[0]) + " ");
-        SerialUSB.print(String(id[1]) + " ");
-        SerialUSB.print(String(id[2]) + " ");
-        SerialUSB.println(String(id[3]));
+        SerialUSB.print(id[0], HEX);
+        SerialUSB.print(id[1], HEX);
+        SerialUSB.print(id[2], HEX);
+        SerialUSB.println(id[3], HEX);
     } else {
         SerialUSB.println("Error has occured");
     }
