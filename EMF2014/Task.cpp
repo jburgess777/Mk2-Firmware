@@ -48,7 +48,7 @@ void Task::start() {
         taskName.toCharArray(name, taskName.length());
 
         // start the task
-        if (xTaskCreate(_task, name, ( uint8_t ) 255, static_cast<void*>(this), 2, &mTaskHandle) != pdPASS) {
+        if (xTaskCreate(_task, name, 512, static_cast<void*>(this), 2, &mTaskHandle) != pdPASS) {
             debug::stopWithMessage("Failed to create " + getName() + " task");
         }
 
