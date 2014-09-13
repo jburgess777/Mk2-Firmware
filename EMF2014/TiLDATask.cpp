@@ -58,6 +58,8 @@
 #include "logo.h"
 #include "TiLDA_64x128.h"
 
+// Hack to make FreeRTOS support work in OpenOCD
+unsigned portBASE_TYPE uxTopUsedPriority;
 
 TiLDATask::TiLDATask() {
 
@@ -68,6 +70,10 @@ String TiLDATask::getName() const {
 }
 
 void TiLDATask::task() {
+
+    // Hack to make FreeRTOS support work in OpenOCD
+    uxTopUsedPriority = configMAX_PRIORITIES - 1;
+
     Tilda::_realTimeClock = new RTC_clock(RC);
     Tilda::_appManager = new AppManager;
 
