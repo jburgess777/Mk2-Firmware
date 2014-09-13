@@ -133,10 +133,10 @@ void RadioTransmitTask::respond() {
 			outgoingPacketBuffer[index++] = 0x00;
 			// Our unique id
 			for (int i = 0 ; i < 4 ; ++i) {
-				outgoingPacketBuffer[index++] = static_cast<byte>(uniqueId[i]);
-				outgoingPacketBuffer[index++] = static_cast<byte>(uniqueId[i] >> 8);
-				outgoingPacketBuffer[index++] = static_cast<byte>(uniqueId[i] >> 16);
 				outgoingPacketBuffer[index++] = static_cast<byte>(uniqueId[i] >> 24);
+				outgoingPacketBuffer[index++] = static_cast<byte>(uniqueId[i] >> 16);
+				outgoingPacketBuffer[index++] = static_cast<byte>(uniqueId[i] >> 8);
+				outgoingPacketBuffer[index++] = static_cast<byte>(uniqueId[i]);
 			}
 
 			while (index < RADIO_PACKET_LENGTH) {
