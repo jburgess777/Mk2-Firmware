@@ -38,6 +38,9 @@
 // Use this as a boilerplate app class. If you create a new one, make sure to also register it in the AppManager
 // otherwise it won't show up on the HomeScreen
 
+// task information
+char taskBuffer[1024];
+
 App* HelloWorldApp::New() {
     return new HelloWorldApp;
 }
@@ -59,6 +62,7 @@ bool HelloWorldApp::keepAlive() const {
 }
 
 void HelloWorldApp::task() {
+  int i = 0;
         // Do some setup in here
         Tilda::getGUITask().clearRoot(); // Clean screen
 
@@ -76,7 +80,9 @@ void HelloWorldApp::task() {
 
         Tilda::setLedColor({0, 0, 0});   // LEDs off
 
-        while(true) {  // Make sure this loop goes on forever
+       debug::log("Hello World App!");
+ 
+       while(true) {  // Make sure this loop goes on forever
             Button button = mButtonSubscription->waitForPress(1000); // Wait for up to a second for a button press
             // Make sure all the buttons you're interested in are defined in the constructor
             if (button == UP) {
@@ -86,6 +92,11 @@ void HelloWorldApp::task() {
             } else {
                 Tilda::setLedColor({0, 0, 0});   // LEDs off
             }
+           debug::log(String(i++));
+
+           vTaskList(taskBuffer);
+           debug::log(String(taskBuffer));
+
         }
 }
 
