@@ -105,10 +105,10 @@ void SettingsStore::handleMessage(const IncomingRadioMessage& radioMessage) {
         bool ourUniqueId = true;
 
         for (int i = 0 ; i < 4 ; ++i) {
-            uint32_t receivedUniqueId = Utils::bytesToInt(radioMessage.content()[(i * 4) + 3],
-                                                            radioMessage.content()[(i * 4) + 2],
+            uint32_t receivedUniqueId = Utils::bytesToInt(radioMessage.content()[(i * 4) + 0],
                                                             radioMessage.content()[(i * 4) + 1],
-                                                            radioMessage.content()[(i * 4) + 0]);
+                                                            radioMessage.content()[(i * 4) + 2],
+                                                            radioMessage.content()[(i * 4) + 3]);
 
             ourUniqueId = ourUniqueId && receivedUniqueId == uniqueId[i];
 
