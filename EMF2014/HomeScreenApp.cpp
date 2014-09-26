@@ -36,6 +36,7 @@
 #include "fonts/allFonts.h"
 #include "TiLDA_64x96.h"
 #include "TiLDA_64x128.h"
+#include "name-badge.h"
 
 #define HOMESCREEN_ORIENATION_CHANGE_BIT (1 << 0)
 
@@ -178,7 +179,8 @@ void HomeScreenApp::drawHungScreen() {
     Tilda::log(Tilda::getUserNameLine1());
     Tilda::log(Tilda::getUserNameLine2());
     if (*(Tilda::getUserNameLine1()) == 0 && *(Tilda::getUserNameLine2()) == 0) { // No name set
-        GLCD.DrawBitmap(TiLDA_Logo_64x128 ,0, 0); // Full Screen Image
+      //GLCD.DrawBitmap(TiLDA_Logo_64x128 ,0, 0); // Full Screen Image
+        GLCD.DrawBitmap(NameBadge, 0, 0); // Full Screen Image
     } else {
         GLCD.SelectFont(System5x7);
 
